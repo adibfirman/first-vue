@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue App</title>
+        <script src="https://unpkg.com/vue"></script>
+        <link rel="stylesheet" href="http://davidtkatz.com/public_css/vue.css">
+    </head>
+    <body>
+        <div id="app">
+            <counter
+                v-bind:add-num="10"
+            ></counter>
+        </div>
+    </body>
+    <script>
+        const counter = Vue.component('counter', {
+            template: `
+                <div>
+                    <div>The number is: {{ this.number }}</div>
+                    <button class="vue-btn" @click="incrementing">Increment By: {{ this.addNum }}</button>
+                </div>
+            `,
+            data() {
+                return {
+                    number: 0
+                };
+            },
+            methods: {
+                incrementing() {
+                    this.number += this.addNum;
+                }
+            },
+            props: {
+                addNum: {
+                    type: Number,
+                    default: 1
+                }
+            }
+        });
+
+        const app = new Vue({
+            el: '#app',
+            components: {
+                counter
+            }
+        });
+    </script>
+</html>

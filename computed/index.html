@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue App</title>
+        <script src="https://unpkg.com/vue"></script>
+        <link rel="stylesheet" href="../vue.css">
+    </head>
+    <body>
+        <div id="app">
+            <span>Change This Text</span>
+            <input v-model="text" placeholder="Text...">
+            <div>This Lowercase Text : {{ toLoweCaseText }}</div>
+        </div>
+    </body>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                text: ''
+            },
+            computed: {
+                toLoweCaseText() {
+                    return this.text.toLowerCase();
+                }
+            }
+        });
+    </script>
+</html>
